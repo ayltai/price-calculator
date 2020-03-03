@@ -1,0 +1,217 @@
+version: 2
+
+references:
+
+  ## Cache
+
+  cache_key: &cache_key
+    key: cache-{{ checksum "settings.gradle" }}-{{ checksum "./gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "./app/build.gradle" }}
+  restore_cache: &restore_cache
+    restore_cache:
+      <<: *cache_key
+  save_cache: &save_cache
+    save_cache:
+      <<: *cache_key
+      paths:
+        - ./.gradle
+        - ~/.gradle
+        - ~/.m2
+
+  ## Workspace
+  workspace: &workspace
+    ~/workspace
+
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: *workspace
+  persist_workspace: &persist_workspace
+    persist_to_workspace:
+      root: *workspace
+      paths:
+        - app/build/intermediates
+        - app/build/jacoco
+        - app/build/outputs/androidTest-results
+        - app/build/outputs/apk
+        - app/build/outputs/code-coverage
+        - app/build/test-results
+        - firebase
+
+  ## Docker image configuration
+
+  config: &config
+    working_directory: *workspace
+    docker:
+      - image: circleci/android:api-29
+    environment:
+      TERM: dumb
+      _JAVA_OPTIONS: "-Dfile.encoding=UTF8 -Xverify:none -Xmx1536m -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
+
+  ## Keys
+
+  # Android key store
+
+  decode_android_key: &decode_android_key
+    run:
+      name: Decode Android key store
+      command: echo $ANDROID_KEY_STORE | base64 -di > app/key-store.jks
+
+  # Google Services key
+
+  decode_google_services_key: &decode_google_services_key
+    run:
+      name: Decode Google Services key
+      command: echo $GOOGLE_SERVICES_KEY | base64 -di > app/google-services.json
+
+  # GCP service account key
+
+  decode_gcloud_key: &decode_gcloud_key
+    run:
+      name: Decode GCP service account key
+      command: echo $GCP_SERVICE_ACCOUNT_KEY | base64 -di > client-secret.json
+
+jobs:
+
+  assemble:
+    <<: *config
+    steps:
+      - checkout
+      - *restore_cache
+      - *decode_google_services_key
+      - run:
+          name: Download dependencies
+          command: ./gradlew androidDependencies
+      - run:
+          name: Compile
+          command: ./gradlew assembleDebug assembleDebugAndroidTest
+      - *save_cache
+      - *persist_workspace
+      - store_artifacts:
+          path: app/build/outputs/apk/debug
+          destination: /apk/
+      - store_artifacts:
+          path: app/build/outputs/apk/androidTest/debug
+          destination: /apk/
+
+  check:
+    <<: *config
+    steps:
+      - checkout
+      - *restore_cache
+      - *decode_google_services_key
+      - run:
+          name: Check code quality
+          command: ./gradlew lint
+      - store_artifacts:
+          path: app/build/reports/lint-results.html
+          destination: /check/lint-results.html
+      - run:
+          name: Check code quality
+          command: ./gradlew check checkstyle
+      - store_artifacts:
+          path: app/build/reports/checkstyle
+          destination: /check/
+
+  test_unit:
+    <<: *config
+    steps:
+      - checkout
+      - *restore_cache
+      - *decode_google_services_key
+      - run:
+          name: Execute unit tests
+          command: ./gradlew testDebugUnitTest
+      - store_test_results:
+          path: app/build/test-results
+      - store_artifacts:
+          path: app/build/reports/tests/testDebugUnitTest
+          destination: /test/
+
+  test_instrumented:
+    <<: *config
+    steps:
+      - *attach_workspace
+      - *decode_google_services_key
+      - *decode_gcloud_key
+      - run:
+          name: Set GCP target project
+          command: gcloud --quiet config set project $GCP_PROJECT_ID
+      - run:
+          name: Authenticate with GCP
+          command: gcloud auth activate-service-account $GCP_SERVICE_ACCOUNT@$GCP_PROJECT_ID.iam.gserviceaccount.com --key-file client-secret.json
+      - run:
+          name: Run instrumented tests on Firebase Test Lab
+          command: gcloud firebase test android run --type instrumentation --app app/build/outputs/apk/debug/app-debug.apk --test app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk --device model=$TEST_DEVICE,version=$TEST_API_VERSION,locale=$TEST_LOCALE,orientation=$TEST_ORIENTATION --environment-variables coverage=true,coverageFile=/sdcard/tmp/code-coverage/connected/coverage.ec --directories-to-pull=/sdcard/tmp --timeout 15m
+      - run:
+          name: Create directory to store test results
+          command: mkdir -p app/build/outputs/code-coverage/debugAndroidTest/connected/$TEST_DEVICE-$TEST_API_VERSION-$TEST_LOCALE-$TEST_ORIENTATION
+      - run:
+          name: Download instrumented test results from Firebase Test Lab
+          command: gsutil -m cp -r -U `gsutil ls gs://$GCP_BUCKET_NAME | tail -1`$TEST_DEVICE-$TEST_API_VERSION-$TEST_LOCALE-$TEST_ORIENTATION/artifacts/coverage.ec app/build/outputs/code-coverage/debugAndroidTest/connected/$TEST_DEVICE-$TEST_API_VERSION-$TEST_LOCALE-$TEST_ORIENTATION/coverage.ec
+      - *persist_workspace
+
+  report_coverage:
+    <<: *config
+    steps:
+      - checkout
+      - *restore_cache
+      - *attach_workspace
+      - *decode_google_services_key
+      - *decode_gcloud_key
+      - run:
+          name: Generate coverage report
+          command: ./gradlew jacocoTestReport
+      - store_artifacts:
+          path: app/build/reports/jacoco/jacocoTestReport
+          destination: /coverage/
+      - run:
+          name: Upload coverage report to CodeCov
+          command: bash <(curl -s https://codecov.io/bash)
+      - run:
+          name: Upload coverage report to SonarCloud
+          command: CI=false ./gradlew sonarqube -Dsonar.projectKey=ayltai_price-calculator -Dsonar.organization=ayltai -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+
+  build:
+    <<: *config
+    steps:
+      - checkout
+      - *restore_cache
+      - *decode_android_key
+      - *decode_google_services_key
+      - run:
+          name: Generate artifact
+          command: ./gradlew assembleRelease
+      - *save_cache
+      - store_artifacts:
+          path: app/build/outputs/apk/release
+          destination: /apk/
+      - store_artifacts:
+          path: app/build/outputs/mapping/release
+          destination: /mapping/
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - assemble
+      - check:
+          requires:
+            - assemble
+      - test_unit:
+          requires:
+            - assemble
+      - test_instrumented:
+          requires:
+            - assemble
+      - report_coverage:
+          requires:
+            - test_unit
+            - test_instrumented
+      - build:
+          requires:
+            - test_unit
+            - test_instrumented
+            - check
+          filters:
+            branches:
+              only:
+                - master

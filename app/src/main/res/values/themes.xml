@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style
+        name="BaseAppTheme"
+        parent="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">?attr/primaryColor</item>
+        <item name="colorSecondary">?attr/secondaryColor</item>
+        <item name="colorPrimaryDark">?attr/primaryColorDark</item>
+        <item name="colorPrimaryVariant">?attr/primaryColorVariant</item>
+        <item name="colorAccent">?attr/accentColor</item>
+        <item name="colorControlActivated">?attr/primaryColor</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:textColor">?attr/textColor</item>
+        <item name="android:textColorHint">?attr/textColorHint</item>
+        <item name="android:windowBackground">?attr/windowBackground</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="LOLLIPOP">false</item>
+        <item name="alertDialogTheme">@style/DialogTheme</item>
+    </style>
+    <style
+        name="AppTheme"
+        parent="BaseAppTheme">
+        <item name="primaryColor">@color/primaryColor</item>
+        <item name="secondaryColor">@color/secondaryColor</item>
+        <item name="primaryColorDark">@color/primaryColorDark</item>
+        <item name="primaryColorVariant">@color/primaryColorVariant</item>
+        <item name="accentColor">@color/accentColor</item>
+        <item name="textColor">@color/textColor</item>
+        <item name="textColorHint">@color/textColorHint</item>
+        <item name="appBackground">@color/appBackground</item>
+        <item name="windowBackground">@color/windowBackground</item>
+        <item name="cardBackground">@color/cardBackground</item>
+        <item name="barBackground">@color/barBackground</item>
+    </style>
+    <style
+        name="BaseDialogTheme"
+        parent="@style/Theme.MaterialComponents.DayNight.Dialog">
+        <item name="colorPrimary">?attr/primaryColor</item>
+        <item name="colorSecondary">?attr/secondaryColor</item>
+        <item name="colorPrimaryDark">?attr/primaryColorDark</item>
+        <item name="colorPrimaryVariant">?attr/primaryColorVariant</item>
+        <item name="colorAccent">?attr/accentColor</item>
+        <item name="colorControlActivated">?attr/primaryColor</item>
+        <item name="android:textColor">?attr/textColor</item>
+        <item name="android:textColorHint">?attr/textColorHint</item>
+        <item name="android:windowBackground">?attr/windowBackground</item>
+    </style>
+    <style
+        name="DialogTheme"
+        parent="BaseDialogTheme">
+        <item name="primaryColor">@color/primaryColor</item>
+        <item name="secondaryColor">@color/secondaryColor</item>
+        <item name="primaryColorDark">@color/primaryColorDark</item>
+        <item name="primaryColorVariant">@color/primaryColorVariant</item>
+        <item name="accentColor">@color/accentColor</item>
+        <item name="textColor">@color/textColor</item>
+        <item name="textColorHint">@color/textColorHint</item>
+        <item name="windowBackground">@color/windowBackground</item>
+    </style>
+</resources>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Price Calculator</string>
+
+    <!-- Actions -->
+    <string name="action_unit_type_none">Unit: None</string>
+    <string name="action_unit_type_area">Unit: Area</string>
+    <string name="action_unit_type_length">Unit: Length</string>
+    <string name="action_unit_type_time">Unit: Time</string>
+    <string name="action_unit_type_volume">Unit: Volume</string>
+    <string name="action_unit_type_weight">Unit: Weight</string>
+    <string name="action_clear_all">Clear all</string>
+    <string name="action_theme">Toggle dark mode</string>
+    <string name="action_clear">Clear</string>
+    <string name="action_remove">Remove</string>
+    <string name="action_done">Done</string>
+
+    <!-- Labels -->
+    <string name="label_price">Price</string>
+    <string name="label_quantity">Quantity</string>
+    <string name="label_area">Area</string>
+    <string name="label_length">Length</string>
+    <string name="label_time">Time</string>
+    <string name="label_volume">Volume</string>
+    <string name="label_weight">Weight</string>
+    <string name="label_unit">Unit</string>
+    <string name="label_diff">+%s%%</string>
+
+    <string-array name="label_units">
+        <item>None</item>
+        <item>Area</item>
+        <item>Length</item>
+        <item>Time</item>
+        <item>Volume</item>
+        <item>Weight</item>
+    </string-array>
+    <string-array name="label_areas">
+        <item>sq. m</item>
+        <item>sq. km</item>
+        <item>sq. in</item>
+        <item>sq. ft</item>
+        <item>sq. yd</item>
+        <item>sq. mi</item>
+    </string-array>
+    <string-array name="label_lengths">
+        <item>mm</item>
+        <item>cm</item>
+        <item>m</item>
+        <item>km</item>
+        <item>in</item>
+        <item>ft</item>
+        <item>yd</item>
+        <item>mi</item>
+    </string-array>
+    <string-array name="label_times">
+        <item>min</item>
+        <item>hour</item>
+        <item>day</item>
+        <item>week</item>
+        <item>month</item>
+        <item>year</item>
+    </string-array>
+    <string-array name="label_volumes">
+        <item>mL</item>
+        <item>L</item>
+        <item>gal (US)</item>
+        <item>gal</item>
+        <item>oz (US)</item>
+        <item>oz (SI)</item>
+    </string-array>
+    <string-array name="label_weights">
+        <item>mg</item>
+        <item>g</item>
+        <item>kg</item>
+        <item>lb</item>
+        <item>oz</item>
+        <item>ton (US)</item>
+        <item>ton (SI)</item>
+        <item>ton (UK)</item>
+    </string-array>
+</resources>

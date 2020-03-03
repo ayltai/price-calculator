@@ -1,0 +1,27 @@
+### Java
+*.jar
+hs_err_pid*
+replay_pid*.log
+
+### Gradle
+.gradle/
+build/
+local.properties
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+### macOS
+# General
+.DS_Store
+
+### IntelliJ
+.idea/
+*.iml
+
+### Secrets
+key-store.jks
+google-services.json

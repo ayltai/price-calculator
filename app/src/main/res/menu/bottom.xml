@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_unit_type"
+        android:title="@string/action_unit_type_weight"
+        android:icon="@drawable/ic_unit_type_weight"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_clear_all"
+        android:title="@string/action_clear_all"
+        android:icon="@drawable/ic_action_clear_all_white_24dp"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_theme"
+        android:title="@string/action_theme"
+        android:icon="@drawable/ic_action_theme_white_24dp"
+        app:showAsAction="ifRoom" />
+</menu>

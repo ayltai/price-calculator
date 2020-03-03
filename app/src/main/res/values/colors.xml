@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">@color/cyan_800</color>
+    <color name="primaryColorDark">@color/cyan_900</color>
+    <color name="primaryColorVariant">@color/orange_700</color>
+    <color name="secondaryColor">@color/primaryColor</color>
+    <color name="accentColor">@color/orange_700</color>
+    <color name="textColor">#dd000000</color>
+    <color name="textColorHint">#99000000</color>
+    <color name="appBackground">@color/primaryColor</color>
+    <color name="windowBackground">@color/gray_50</color>
+    <color name="cardBackground">@color/white</color>
+    <color name="barBackground">@color/primaryColor</color>
+</resources>

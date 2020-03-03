@@ -1,0 +1,28 @@
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.github.ayltai.pricecalculator">
+    <application
+        android:name=".MainApplication"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:theme="@style/AppTheme"
+        android:appCategory="productivity"
+        android:resizeableActivity="true"
+        android:supportsRtl="true"
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        tools:replace="android:supportsRtl,android:allowBackup"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="Q">
+        <activity
+            android:name=".app.MainActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="density|fontScale|keyboard|keyboardHidden|locale|orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

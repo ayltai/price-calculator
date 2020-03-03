@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style
+        name="AppTheme"
+        parent="BaseAppTheme">
+        <item name="primaryColor">@color/primaryColor</item>
+        <item name="secondaryColor">@color/secondaryColor</item>
+        <item name="primaryColorDark">@color/primaryColorDark</item>
+        <item name="primaryColorVariant">@color/primaryColorVariant</item>
+        <item name="accentColor">@color/accentColor</item>
+        <item name="textColor">@color/textColor</item>
+        <item name="textColorHint">@color/textColorHint</item>
+        <item name="appBackground">@color/appBackground</item>
+        <item name="windowBackground">@color/windowBackground</item>
+        <item name="cardBackground">@color/cardBackground</item>
+        <item name="barBackground">@color/barBackground</item>
+    </style>
+</resources>

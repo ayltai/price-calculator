@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style
+        name="Toolbar"
+        parent="@style/Widget.MaterialComponents.Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:theme">@style/ThemeOverlay.MaterialComponents.Dark.ActionBar</item>
+        <item name="android:background">?attr/barBackground</item>
+    </style>
+    <style
+        name="Card"
+        parent="@style/Widget.MaterialComponents.CardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="cardBackgroundColor">?attr/cardBackground</item>
+        <item name="cardElevation">@dimen/cardElevation</item>
+    </style>
+    <style name="TextLayout">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="boxBackgroundMode">none</item>
+    </style>
+    <style
+        name="Text"
+        parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/textNormal</item>
+    </style>
+    <style name="Text.Input">
+        <item name="android:gravity">end</item>
+    </style>
+    <style
+        name="Button"
+        parent="@style/Widget.MaterialComponents.Button.TextButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/space8</item>
+    </style>
+</resources>

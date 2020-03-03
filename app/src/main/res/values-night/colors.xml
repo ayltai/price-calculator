@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">@color/cyan_a400</color>
+    <color name="primaryColorDark">@color/black</color>
+    <color name="textColor">#ddffffff</color>
+    <color name="textColorHint">#99ffffff</color>
+    <color name="appBackground">@color/gray_900</color>
+    <color name="windowBackground">#303030</color>
+    <color name="cardBackground">@color/gray_800</color>
+    <color name="barBackground">@color/gray_900</color>
+    <color name="menuItemBackground">#40ffffff</color>
+</resources>

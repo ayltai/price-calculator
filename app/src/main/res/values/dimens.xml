@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="space8">8dp</dimen>
+    <dimen name="space16">16dp</dimen>
+    <dimen name="bottomAppBar">56dp</dimen>
+    <dimen name="cardElevation">1dp</dimen>
+    <dimen name="toolbarElevation">4dp</dimen>
+
+    <!-- Text -->
+    <dimen name="textNormal">17sp</dimen>
+
+    <!-- Icon -->
+    <dimen name="iconSmall">24dp</dimen>
+</resources>
