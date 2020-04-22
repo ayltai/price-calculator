@@ -132,7 +132,7 @@ dependencies {
 
     // Android Support libraries
     implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha02'
-    implementation 'com.google.android.material:material:1.2.0-alpha05'
+    implementation 'com.google.android.material:material:1.2.0-alpha06'
 
     // Firebase
     implementation 'com.google.firebase:firebase-core:17.3.0'
