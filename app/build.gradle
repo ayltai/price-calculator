@@ -162,7 +162,7 @@ dependencies {
 
     // Instrumented testing
     androidTestImplementation "androidx.test:rules:$androidTestVersion"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2-rc02'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2-rc03'
     androidTestImplementation ("androidx.test.espresso:espresso-core:$espressoVersion") {
         exclude group : 'com.android.support'
     }
