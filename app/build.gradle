@@ -7,7 +7,7 @@ plugins {
     id 'org.sonarqube'                 version '3.0'
     id 'jacoco'
     id 'com.getkeepsafe.dexcount'
-    id 'com.github.ben-manes.versions' version '0.34.0'
+    id 'com.github.ben-manes.versions' version '0.35.0'
 }
 
 String VERSION_REVISION = 'git rev-list --count HEAD'.execute().text.trim()
