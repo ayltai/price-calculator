@@ -108,7 +108,7 @@ ext {
     supportLibraryVersion = '28.0.0'
     jetPackVersion        = '2.2.1'
     lifecycleVersion      = '2.3.0-rc01'
-    daggerVersion         = '2.31'
+    daggerVersion         = '2.31.1'
     lombokVersion         = '1.18.16'
     robolectricVersion    = '4.4'
     androidTestVersion    = '1.3.0'
