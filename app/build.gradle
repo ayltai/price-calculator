@@ -155,7 +155,7 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.6'
 
     // Unit testing
-    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.2'
     testImplementation "androidx.test:core:$androidTestVersion"
     testImplementation "org.robolectric:robolectric:$robolectricVersion"
     testImplementation "org.robolectric:shadows-multidex:$robolectricVersion"
