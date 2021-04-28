@@ -1,0 +1,12 @@
+version: 2
+updates:
+- package-ecosystem: gradle
+  directory: "/"
+  schedule:
+    interval: daily
+    timezone: Asia/Manila
+  open-pull-requests-limit: 99
+  ignore:
+  - dependency-name: com.github.spotbugs
+    versions:
+    - "> 3.0.0"
