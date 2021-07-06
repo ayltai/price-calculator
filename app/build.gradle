@@ -110,7 +110,7 @@ ext {
     lifecycleVersion      = '2.3.1'
     daggerVersion         = '2.37'
     lombokVersion         = '1.18.20'
-    robolectricVersion    = '4.6'
+    robolectricVersion    = '4.6.1'
     androidTestVersion    = '1.4.0'
     espressoVersion       = '3.4.0'
 }
