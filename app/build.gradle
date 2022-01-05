@@ -151,7 +151,7 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:$lombokVersion"
 
     // Debugging
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.8'
 
     // Unit testing
     testImplementation 'junit:junit:4.13.2'
