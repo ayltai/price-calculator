@@ -109,7 +109,7 @@ ext {
     jetPackVersion        = '2.2.1'
     lifecycleVersion      = '2.4.1'
     daggerVersion         = '2.41'
-    lombokVersion         = '1.18.22'
+    lombokVersion         = '1.18.24'
     robolectricVersion    = '4.7.3'
     androidTestVersion    = '1.4.0'
     espressoVersion       = '3.4.0'
