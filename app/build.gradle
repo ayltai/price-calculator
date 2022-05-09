@@ -136,7 +136,7 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-core:20.1.2'
     implementation 'com.google.firebase:firebase-crashlytics:18.2.10'
-    implementation 'com.google.firebase:firebase-config:21.0.2'
+    implementation 'com.google.firebase:firebase-config:21.1.0'
 
     // Reactive programming
     implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
