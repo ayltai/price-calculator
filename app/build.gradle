@@ -135,7 +135,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.0'
 
     implementation 'com.google.firebase:firebase-core:21.0.0'
-    implementation 'com.google.firebase:firebase-crashlytics:18.2.10'
+    implementation 'com.google.firebase:firebase-crashlytics:18.2.11'
     implementation 'com.google.firebase:firebase-config:21.1.0'
 
     // Reactive programming
